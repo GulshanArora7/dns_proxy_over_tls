@@ -1,0 +1,27 @@
+Instruction to run DockerFile
+
+# To build the docker image
+    $ docker build -t dns_proxy -f Dockerfile .
+
+
+# To run docker container with default port 53 and cert file "/etc/ssl/cert.pem"
+
+    $ docker run -d --name dns_proxy_default_port -p 53:53/tcp -p 53:53/udp dns_proxy
+
+# To run docker container with external port 53 and external cert file.
+
+    $ docker run -d --name dns_proxy_ext_port -e PROXY_PORT=94 -p 94:94/tcp -p 94:94/udp dns_proxy
+
+# To list the containers
+
+    $ docker container ls -a
+
+# To stop the container
+    $ docker stop <container-id>
+
+# To remove the container
+    $ docker rm -f <container-id>
+
+# To remove docker image from local machine
+    $ docker rmi <image-id>
+
